@@ -1,0 +1,70 @@
+<div>
+  <div class="header col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <img src="assets/weather-news(1).png" alt="no img" />
+    <span class="heading">Weather Updates</span>
+  </div>
+  <div class="maincontainer col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="sidebar col-lg-2 col-md-2 col-sm-2 col-xs-2">
+      <div
+        class="country"
+        (click)="onsubmit('India')"
+        [ngClass]="{ 'tab-selected': destination === 'India' }"
+      >
+        India
+      </div>
+      <div
+        class="country"
+        (click)="onsubmit('America')"
+        [ngClass]="{ 'tab-selected': destination === 'America' }"
+      >
+        America
+      </div>
+      <div
+        class="country"
+        (click)="onsubmit('UK')"
+        [ngClass]="{ 'tab-selected': destination === 'UK' }"
+      >
+        UK
+      </div>
+      <div
+        class="country"
+        (click)="onsubmit('France')"
+        [ngClass]="{ 'tab-selected': destination === 'France' }"
+      >
+        France
+      </div>
+      <div
+        class="country"
+        (click)="onsubmit('Germany')"
+        [ngClass]="{ 'tab-selected': destination === 'Germany' }"
+      >
+        Germany
+      </div>
+    </div>
+    <div class="weatherStatus col-lg-11 col-md-11 col-sm-11 col-xs-11">
+      <div class="texts" *ngIf="tempList.length != 0">
+        Weather update of major cities in {{ destination }}
+      </div>
+      <div class="texts texts-start" *ngIf="tempList.length == 0">
+        Please select a country to see the weather updates of its major cities
+      </div>
+      <div class="stateCon col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        <div
+          class="state col-lg-3 col-md-3 col-sm-3 col-xs-3"
+          *ngFor="let data of tempList"
+        >
+          <div class="display-col">
+            <span class="city">{{ data[0] }}</span
+            ><span>{{ data[1] }}°c</span><span>{{ data[3] }}</span>
+          </div>
+          <img class="Weathericons" src="{{ data[2] }}" alt="no img" />
+        </div>
+        <!-- <div class="texts texts-start">
+          We are currently facing some issue<br />Please Try again later
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
